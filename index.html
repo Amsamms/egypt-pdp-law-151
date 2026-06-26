@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Egypt Personal Data Protection Law 151/2020, Interactive Presentation</title>
+<meta name="description" content="An interactive bilingual (EN/AR) slide presentation on Egypt's Personal Data Protection Law No. 151 of 2020 and its 2025 Executive Regulations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a1a33; --navy2:#0e2444; --navy3:#13315c;
+  --gold:#c8a24a; --gold-soft:#e3c682; --gold-deep:#9c7c2f;
+  --red:#c8102e; --red-soft:#e23a52;
+  --ivory:#f6f1e7; --ivory2:#ece3d2;
+  --muted:#9fb0c8; --line:rgba(200,162,74,.22);
+  --card:rgba(255,255,255,.04); --card2:rgba(255,255,255,.07);
+  --ok:#3fb37f;
+  --serif:'Marcellus',Georgia,serif; --sans:'Manrope',system-ui,Segoe UI,sans-serif;
+}
+html[dir="rtl"]{ --serif:'Amiri',serif; --sans:'Cairo',system-ui,sans-serif; }
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:
+    radial-gradient(1200px 700px at 80% -10%, rgba(19,49,92,.5), transparent 60%),
+    radial-gradient(900px 600px at -10% 20%, rgba(200,16,46,.10), transparent 55%),
+    linear-gradient(180deg,#08152b 0%, #0a1a33 45%, #08152b 100%);
+  color:var(--ivory); font-family:var(--sans); -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+h1,h2,h3,.serif{font-family:var(--serif);font-weight:400;letter-spacing:.2px}
+a{color:var(--gold-soft);text-decoration:none}
+::selection{background:var(--gold);color:var(--navy)}
+
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.55}
+
+/* top bar */
+.topbar{position:fixed;top:0;left:0;right:0;height:56px;z-index:60;display:flex;align-items:center;gap:14px;
+  padding:0 20px;background:linear-gradient(180deg,rgba(8,21,43,.92),rgba(8,21,43,.4));border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:16px;white-space:nowrap}
+.brand .seal{width:28px;height:28px;flex:none}
+.sec-name{margin-inline-start:auto;color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:42vw}
+.langbtn{border:1px solid var(--gold);color:var(--gold-soft);background:transparent;padding:6px 13px;border-radius:999px;cursor:pointer;font-family:var(--sans);font-weight:700;font-size:12.5px;white-space:nowrap}
+.langbtn:hover{background:var(--gold);color:var(--navy)}
+#prog{position:fixed;top:56px;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--red));z-index:60;transition:width .5s}
+html[dir="rtl"] #prog{left:auto;right:0}
+
+/* deck */
+#deck{position:fixed;inset:56px 0 0 0;z-index:10}
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  padding:34px 48px 92px;overflow-y:auto;overflow-x:hidden;
+  transform:translateX(100%);opacity:0;visibility:hidden;
+  transition:transform .6s cubic-bezier(.22,.7,.2,1), opacity .5s ease;}
+.slide.prevpos{transform:translateX(-100%)}
+.slide.active{transform:translateX(0);opacity:1;visibility:visible}
+.inner{width:100%;max-width:1080px;margin:auto}
+@media(max-width:640px){.slide{padding:26px 18px 96px}}
+
+/* shared type */
+.eyebrow{color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:12px}
+h2.title{font-size:clamp(25px,3.6vw,42px);margin:9px 0 7px;color:#fff;line-height:1.08}
+.lead{font-size:clamp(15px,1.7vw,18px);color:var(--ivory2);max-width:760px;font-weight:300;margin:0}
+.plain{margin-top:16px;border-inline-start:3px solid var(--gold);background:var(--card);padding:13px 17px;border-radius:0 12px 12px 0;font-size:14.5px;color:var(--ivory2)}
+html[dir="rtl"] .plain{border-inline-start:none;border-inline-end:3px solid var(--gold);border-radius:12px 0 0 12px}
+.plain .tag{display:inline-block;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-inline-end:6px}
+
+/* entrance animation for active slide */
+.slide .anim{opacity:0;transform:translateY(22px)}
+.slide.active .anim{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.slide.active .anim:nth-child(2){transition-delay:.08s}
+.slide.active .anim:nth-child(3){transition-delay:.16s}
+.slide.active .anim:nth-child(4){transition-delay:.24s}
+.slide.active .anim:nth-child(5){transition-delay:.32s}
+
+/* TITLE slide */
+.kicker{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--card);padding:6px 14px;border-radius:999px;font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold-soft);font-weight:700}
+.kicker .dot,.cd-label .dot{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,16,46,.55)}70%{box-shadow:0 0 0 11px rgba(200,16,46,0)}100%{box-shadow:0 0 0 0 rgba(200,16,46,0)}}
+.t-title{font-size:clamp(34px,6vw,72px);line-height:1.02;margin:18px 0 6px;color:#fff}
+.t-title .num{color:var(--gold-soft)}
+.t-sub{font-size:clamp(16px,2vw,21px);color:var(--ivory2);max-width:720px;font-weight:300}
+.countdown{margin-top:26px;display:inline-flex;flex-direction:column;gap:9px;padding:18px 24px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(200,16,46,.10),rgba(200,162,74,.06))}
+.cd-label{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--red-soft);font-weight:700;display:flex;align-items:center;gap:8px}
+.cd-grid{display:flex;gap:13px}
+.cd-cell{min-width:66px;text-align:center}
+.cd-num{font-family:var(--serif);font-size:clamp(26px,4vw,40px);color:#fff;line-height:1}
+.cd-unit{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.cd-note{font-size:12px;color:var(--muted)}
+.hint{margin-top:24px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.hint kbd{border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-family:var(--sans);font-size:12px;color:var(--gold-soft);background:var(--card)}
+
+/* grids/cards */
+.grid{display:grid;gap:15px;margin-top:22px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);background:var(--card);border-radius:15px;padding:18px;transition:.25s}
+.card:hover{border-color:var(--gold);background:var(--card2);transform:translateY(-3px)}
+.card .ic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:rgba(200,162,74,.12);margin-bottom:10px;font-size:20px}
+.card h3{font-size:18px;margin:0 0 5px;color:#fff}
+.card p{margin:0;color:var(--ivory2);font-size:14px;line-height:1.55}
+
+.stat{text-align:center;border:1px solid var(--line);background:var(--card);border-radius:15px;padding:22px 14px}
+.stat .n{font-family:var(--serif);font-size:clamp(26px,3.6vw,40px);color:var(--gold-soft);line-height:1}
+.stat .l{font-weight:700;margin-top:7px;color:#fff;font-size:14.5px}
+.stat .s{color:var(--muted);font-size:12.5px;margin-top:4px}
+
+/* awakening */
+.big{font-family:var(--serif);font-size:clamp(23px,3.4vw,40px);color:#fff;line-height:1.18}
+.big em{color:var(--red-soft);font-style:normal}
+.decree{margin-top:20px;display:flex;gap:14px;flex-wrap:wrap}
+.decree .chip{border:1px solid var(--line);background:var(--card2);border-radius:13px;padding:14px 17px;min-width:170px;flex:1}
+.decree .chip .d{font-family:var(--serif);font-size:26px;color:var(--gold-soft)}
+.decree .chip .t{font-size:12.5px;color:var(--muted);margin-top:3px}
+
+/* flip cards */
+.flip{perspective:1200px;min-height:150px}
+.flip-in{position:relative;width:100%;height:100%;min-height:150px;transition:transform .7s;transform-style:preserve-3d;cursor:pointer}
+.flip.on .flip-in{transform:rotateY(180deg)}
+.flip-f,.flip-b{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:15px;padding:18px;display:flex;flex-direction:column;justify-content:center}
+.flip-f{background:var(--card)}.flip-b{background:linear-gradient(160deg,var(--navy3),var(--navy2));transform:rotateY(180deg)}
+.flip-f h3{margin:0 0 4px;color:#fff;font-size:18px}.flip-f .h2t{font-size:11.5px;color:var(--gold);letter-spacing:.5px}
+.flip-b p{margin:0;font-size:14px;color:var(--ivory2);line-height:1.55}
+
+/* wizard */
+.wiz{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:820px){.wiz{grid-template-columns:1fr}}
+.wiz-q{border:1px solid var(--line);background:var(--card2);border-radius:15px;padding:18px}
+.wiz-q .scn{display:block;width:100%;text-align:start;border:1px solid var(--line);background:var(--card);color:var(--ivory);padding:11px 14px;border-radius:10px;margin-bottom:8px;cursor:pointer;font-family:var(--sans);font-size:13.5px;transition:.2s}
+.wiz-q .scn:hover{border-color:var(--gold);color:#fff}
+.wiz-q .scn.act{border-color:var(--gold);background:rgba(200,162,74,.14);color:#fff;font-weight:600}
+.basis{border:1px solid var(--line);background:var(--card);border-radius:15px;padding:8px}
+.basis .b{display:flex;gap:11px;align-items:center;padding:9px 11px;border-radius:10px;transition:.25s}
+.basis .b .bn{width:25px;height:25px;flex:none;border-radius:50%;background:var(--navy3);color:var(--gold-soft);display:grid;place-items:center;font-weight:700;font-size:13px;font-family:var(--serif)}
+.basis .b .bt{font-size:13.5px;color:var(--ivory2)}
+.basis .b.hit{background:rgba(200,162,74,.16);box-shadow:inset 0 0 0 1px var(--gold)}
+.basis .b.hit .bt{color:#fff;font-weight:600}
+.wiz-ans{margin-top:12px;font-size:13.5px;color:var(--gold-soft);min-height:20px}
+
+/* penalty */
+.pen{margin-top:20px;display:grid;grid-template-columns:280px 1fr;gap:22px}
+@media(max-width:820px){.pen{grid-template-columns:1fr}}
+.pen-list .pv{display:block;width:100%;text-align:start;border:1px solid var(--line);background:var(--card);color:var(--ivory);padding:11px 14px;border-radius:10px;margin-bottom:8px;cursor:pointer;font-size:13.5px;transition:.2s;font-family:var(--sans)}
+.pen-list .pv:hover{border-color:var(--gold)}
+.pen-list .pv.act{border-color:var(--gold);background:rgba(200,162,74,.16);color:#fff;font-weight:600}
+.pen-view{border:1px solid var(--line);background:var(--card2);border-radius:16px;padding:22px}
+.pen-view .pt{font-family:var(--serif);font-size:22px;color:#fff}
+.gauge{margin:16px 0 7px;height:16px;border-radius:999px;background:rgba(255,255,255,.06);position:relative;overflow:hidden}
+.gauge .fill{position:absolute;inset:0;width:0;border-radius:999px;background:linear-gradient(90deg,var(--gold),var(--red));transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.gauge-scale{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted)}
+.pen-figs{display:flex;gap:12px;flex-wrap:wrap;margin-top:15px}
+.pen-fig{border:1px solid var(--line);background:var(--card);border-radius:11px;padding:12px 14px;flex:1;min-width:130px}
+.pen-fig .pf-n{font-family:var(--serif);font-size:23px;color:var(--gold-soft)}.pen-fig .pf-l{font-size:11.5px;color:var(--muted)}
+.pen-jail{margin-top:6px;font-size:13px}.pen-jail .y{color:var(--red-soft);font-weight:700}
+.pen-desc{margin-top:12px;color:var(--ivory2);font-size:14px;line-height:1.55}
+
+/* comparison */
+.cmp{margin-top:16px;width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.cmp th,.cmp td{padding:11px 14px;text-align:start;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+.cmp thead th{background:var(--navy2);color:#fff;font-family:var(--serif);font-weight:400;font-size:15px}
+.cmp tbody tr:hover{background:rgba(200,162,74,.06)}
+.cmp td:first-child{color:var(--gold-soft);font-weight:600}.cmp .eu{color:var(--muted)}
+.cmp tr.diff.show td:first-child::after{content:"●";color:var(--red);margin-inline-start:8px;font-size:9px}
+.cmp-toggle{display:inline-flex;align-items:center;gap:9px;margin-top:6px;cursor:pointer;font-size:13.5px;color:var(--ivory2)}
+.switch{width:40px;height:22px;border-radius:999px;background:rgba(255,255,255,.14);position:relative;transition:.2s}
+.switch::after{content:"";position:absolute;top:2px;inset-inline-start:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s}
+.cmp-toggle.on .switch{background:var(--gold)}.cmp-toggle.on .switch::after{inset-inline-start:20px}
+
+/* wheel */
+.wheel-wrap{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;margin-top:18px}
+@media(max-width:820px){.wheel-wrap{grid-template-columns:1fr}.wheel{margin-bottom:10px}}
+.wheel{position:relative;width:290px;height:290px;margin:0 auto}
+.wheel .hub{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 40% 35%,var(--navy3),var(--navy));border:2px solid var(--gold);display:grid;place-items:center;text-align:center;z-index:3}
+.wheel .hub span{font-family:var(--serif);color:var(--gold-soft);font-size:14px}
+.spoke{position:absolute;top:50%;left:50%;width:120px;height:50px;margin:-25px 0 0 0;transform-origin:0 50%}
+.spoke .pill{position:absolute;left:92px;top:50%;transform:translateY(-50%);width:120px;padding:8px 10px;border:1px solid var(--line);background:var(--card2);border-radius:10px;cursor:pointer;transition:.25s}
+.spoke .pill b{display:block;color:#fff;font-size:12.5px}.spoke .pill small{color:var(--muted);font-size:10.5px}
+.spoke .pill:hover,.spoke .pill.on{border-color:var(--gold);background:rgba(200,162,74,.16)}
+.wheel-info{border:1px solid var(--line);background:var(--card);border-radius:15px;padding:20px;min-height:110px}
+.wheel-info h4{margin:0 0 6px;font-family:var(--serif);color:var(--gold-soft);font-size:19px}
+.wheel-info p{margin:0;color:var(--ivory2);font-size:14.5px;line-height:1.55}
+
+/* timeline */
+.tl{margin-top:22px}
+.tl-track{display:flex;overflow-x:auto;padding-bottom:12px}
+.tl-node{flex:1;min-width:150px;position:relative;cursor:pointer;padding-top:40px;text-align:center}
+.tl-line{position:absolute;top:13px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold-deep),var(--gold))}
+.tl-dot{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:17px;height:17px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);transition:.25s;z-index:2}
+.tl-node:hover .tl-dot,.tl-node.act .tl-dot{background:var(--gold);box-shadow:0 0 0 6px rgba(200,162,74,.18)}
+.tl-node.here .tl-dot{border-color:var(--red);background:var(--red)}
+.tl-yr{font-family:var(--serif);font-size:19px;color:var(--gold-soft)}
+.tl-tt{font-size:12px;color:var(--muted);padding:0 6px;margin-top:2px}
+.tl-node.here .tl-yr{color:var(--red-soft)}
+.tl-detail{margin-top:14px;border:1px solid var(--line);background:var(--card2);border-radius:15px;padding:18px 22px;min-height:84px}
+.tl-detail h4{margin:0 0 5px;font-family:var(--serif);color:#fff;font-size:20px}
+.tl-detail p{margin:0;color:var(--ivory2);font-size:14.5px;line-height:1.55}
+
+/* sectors */
+.tabs{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ivory);padding:9px 16px;border-radius:999px;cursor:pointer;font-weight:600;font-size:13.5px;transition:.2s}
+.tab.act{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.tab:hover:not(.act){border-color:var(--gold)}
+.sector-body{margin-top:16px;border:1px solid var(--line);background:var(--card2);border-radius:15px;padding:22px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+@media(max-width:560px){.sector-body{grid-template-columns:1fr}}
+.sector-body .em{font-size:48px}
+.sector-body h4{margin:0 0 5px;font-family:var(--serif);color:#fff;font-size:21px}
+.sector-body p{margin:0;color:var(--ivory2);font-size:14.5px;line-height:1.55}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+@media(max-width:820px){.road{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.road{grid-template-columns:1fr}}
+.step{border:1px solid var(--line);background:var(--card);border-radius:15px;padding:18px}
+.step .sn{font-family:var(--serif);font-size:38px;color:rgba(200,162,74,.35);line-height:1}
+.step h4{margin:5px 0 5px;color:#fff;font-size:17px}.step p{margin:0;color:var(--ivory2);font-size:13.5px;line-height:1.5}
+
+/* refs */
+.refs{margin-top:16px;display:grid;gap:8px;max-height:54vh;overflow-y:auto;padding-inline-end:6px}
+.ref{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:11px 14px;font-size:13px;color:var(--ivory2)}
+.ref a{word-break:break-word}
+.refs .note{font-size:12.5px;color:var(--muted)}
+
+/* breach timer */
+.breach{margin-top:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.breach .bbtn{border:1px solid var(--red);color:var(--red-soft);background:rgba(200,16,46,.08);padding:11px 18px;border-radius:11px;cursor:pointer;font-family:var(--sans);font-weight:700;font-size:14px;transition:.2s}
+.breach .bbtn:hover{background:var(--red);color:#fff}
+.breach .btimer{font-family:var(--serif);font-size:30px;color:var(--ivory);letter-spacing:1px;display:none}
+.breach .btimer.run{display:inline-block}
+.breach .btimer.warn{color:var(--red-soft);animation:flash 1s infinite}
+@keyframes flash{50%{opacity:.45}}
+.breach .bmsg{font-size:13px;color:var(--muted)}
+
+/* repeat toggle */
+.rep-toggle{display:inline-flex;align-items:center;gap:9px;margin-top:10px;cursor:pointer;font-size:13.5px;color:var(--ivory2)}
+
+/* quiz */
+.quiz{margin-top:20px;border:1px solid var(--line);background:var(--card2);border-radius:16px;padding:24px;min-height:240px}
+.quiz .qnum{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:700}
+.quiz .qq{font-family:var(--serif);font-size:22px;color:#fff;margin:8px 0 16px;line-height:1.3}
+.quiz .opt{display:block;width:100%;text-align:start;border:1px solid var(--line);background:var(--card);color:var(--ivory);padding:13px 16px;border-radius:11px;margin-bottom:9px;cursor:pointer;font-family:var(--sans);font-size:14.5px;transition:.2s}
+.quiz .opt:hover{border-color:var(--gold)}
+.quiz .opt.right{border-color:var(--ok);background:rgba(63,179,127,.16);color:#fff;font-weight:600}
+.quiz .opt.wrong{border-color:var(--red);background:rgba(200,16,46,.14);color:#fff}
+.quiz .opt.dim{opacity:.5}
+.quiz .qexp{margin-top:8px;font-size:14px;color:var(--gold-soft);min-height:20px}
+.quiz .qfoot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;gap:12px}
+.quiz .qscore{font-size:14px;color:var(--muted)}.quiz .qscore b{color:var(--gold-soft)}
+.quiz .qnext{border:1px solid var(--gold);color:var(--gold-soft);background:transparent;padding:9px 18px;border-radius:10px;cursor:pointer;font-weight:700;font-family:var(--sans);font-size:14px}
+.quiz .qnext:hover{background:var(--gold);color:var(--navy)}.quiz .qnext:disabled{opacity:.35;cursor:default}
+.quiz .qend{text-align:center}
+.quiz .qend .big-score{font-family:var(--serif);font-size:54px;color:var(--gold-soft)}
+.quiz .qend .verdict{font-size:18px;color:#fff;margin:6px 0 14px}
+
+/* readiness */
+.ready{margin-top:20px;display:grid;grid-template-columns:260px 1fr;gap:26px;align-items:center}
+@media(max-width:760px){.ready{grid-template-columns:1fr}.ring-wrap{margin:0 auto}}
+.ring-wrap{position:relative;width:230px;height:230px;margin:0 auto}
+.ring-wrap svg{transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:rgba(255,255,255,.08);stroke-width:16}
+.ring-fg{fill:none;stroke:url(#rg);stroke-width:16;stroke-linecap:round;transition:stroke-dashoffset .7s cubic-bezier(.2,.7,.2,1)}
+.ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ring-center .pc{font-family:var(--serif);font-size:46px;color:#fff;line-height:1}
+.ring-center .vd{font-size:13px;color:var(--gold-soft);margin-top:4px;font-weight:600;padding:0 20px}
+.checks .ck{display:flex;align-items:center;gap:12px;padding:11px 13px;border:1px solid var(--line);background:var(--card);border-radius:11px;margin-bottom:9px;cursor:pointer;transition:.2s}
+.checks .ck:hover{border-color:var(--gold)}
+.checks .ck .box{width:22px;height:22px;flex:none;border-radius:6px;border:2px solid var(--muted);display:grid;place-items:center;color:transparent;font-size:14px;font-weight:800;transition:.2s}
+.checks .ck.on .box{background:var(--ok);border-color:var(--ok);color:#06231a}
+.checks .ck .ct{font-size:14px;color:var(--ivory2)}.checks .ck.on .ct{color:#fff}
+
+/* CONTROLS */
+.controls{position:fixed;bottom:0;left:0;right:0;z-index:60;height:74px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:linear-gradient(0deg,rgba(8,21,43,.95),rgba(8,21,43,.2));border-top:1px solid var(--line);backdrop-filter:blur(10px)}
+.ctrl-row{display:flex;align-items:center;gap:16px}
+.navb{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card2);color:var(--gold-soft);font-size:18px;cursor:pointer;display:grid;place-items:center;transition:.2s}
+.navb:hover{border-color:var(--gold);background:var(--gold);color:var(--navy)}
+.navb:disabled{opacity:.3;cursor:default;border-color:var(--line);background:var(--card2);color:var(--muted)}
+.counter{font-family:var(--serif);font-size:15px;color:var(--ivory2);min-width:62px;text-align:center;direction:ltr}
+.counter b{color:var(--gold-soft)}
+.dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:90vw}
+.dot-i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18);cursor:pointer;transition:.2s}
+.dot-i:hover{background:var(--gold-soft)}
+.dot-i.on{background:var(--gold);width:22px;border-radius:999px}
+.lang-hide{display:none!important}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+
+<div class="topbar">
+  <div class="brand">
+    <svg class="seal" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="var(--gold)" stroke-width="1.5"/><path d="M24 11l9 4v8c0 6-4 10-9 12-5-2-9-6-9-12v-8l9-4z" stroke="var(--gold-soft)" stroke-width="1.6" fill="rgba(200,162,74,.12)"/><path d="M20 24l3 3 6-6" stroke="var(--gold-soft)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span data-en="PDPL 151/2020" data-ar="قانون 151 لسنة 2020">PDPL 151/2020</span>
+  </div>
+  <div class="sec-name" id="secName"></div>
+  <button class="langbtn" id="langBtn">العربية</button>
+</div>
+<div id="prog"></div>
+
+<div id="deck"><!-- slides injected/declared below --></div>
+
+<!-- ====== SLIDES ====== -->
+<div id="slideSource" style="display:none">
+
+<!-- 1 TITLE -->
+<section class="slide" data-name-en="Title" data-name-ar="الغلاف">
+  <div class="inner" style="text-align:center">
+    <div class="anim"><span class="kicker"><span class="dot"></span><span data-en="Egypt · Information Technology Strategy" data-ar="مصر · استراتيجية تكنولوجيا المعلومات">Egypt · Information Technology Strategy</span></span></div>
+    <h1 class="t-title anim"><span data-en="Egypt's Personal Data Protection Law" data-ar="قانون حماية البيانات الشخصية المصري">Egypt's Personal Data Protection Law</span><br><span class="num" data-en="Law No. 151 of 2020" data-ar="القانون رقم 151 لسنة 2020">Law No. 151 of 2020</span></h1>
+    <p class="t-sub anim" style="margin-inline:auto" data-en="The plain-language, interactive presentation on the law that finally went live in 2025, and why every Egyptian business is now on a deadline." data-ar="العرض التفاعلي المبسّط للقانون الذي دخل حيّز التنفيذ فعليًا في 2025، ولماذا أصبحت كل شركة مصرية أمام موعد نهائي.">The plain-language, interactive presentation on the law that finally went live in 2025, and why every Egyptian business is now on a deadline.</p>
+    <div class="anim" style="display:flex;justify-content:center">
+      <div class="countdown">
+        <div class="cd-label"><span class="dot"></span><span data-en="Countdown to full enforcement" data-ar="العدّ التنازلي للتطبيق الكامل">Countdown to full enforcement</span></div>
+        <div class="cd-grid">
+          <div class="cd-cell"><div class="cd-num" id="cdD">--</div><div class="cd-unit" data-en="Days" data-ar="يوم">Days</div></div>
+          <div class="cd-cell"><div class="cd-num" id="cdH">--</div><div class="cd-unit" data-en="Hours" data-ar="ساعة">Hours</div></div>
+          <div class="cd-cell"><div class="cd-num" id="cdM">--</div><div class="cd-unit" data-en="Minutes" data-ar="دقيقة">Minutes</div></div>
+          <div class="cd-cell"><div class="cd-num" id="cdS">--</div><div class="cd-unit" data-en="Seconds" data-ar="ثانية">Seconds</div></div>
+        </div>
+        <div class="cd-note" data-en="Grace period ends ~2 November 2026." data-ar="تنتهي فترة السماح في ~2 نوفمبر 2026.">Grace period ends ~2 November 2026.</div>
+      </div>
+    </div>
+    <div class="hint anim" style="justify-content:center"><span data-en="Use" data-ar="استخدم">Use</span> <kbd>←</kbd><kbd>→</kbd> <span data-en="arrow keys, swipe, or the buttons below to navigate" data-ar="مفاتيح الأسهم أو التمرير أو الأزرار بالأسفل للتنقّل">arrow keys, swipe, or the buttons below to navigate</span></div>
+    <div class="hint anim" style="justify-content:center"><span style="color:var(--muted)" data-en="Download the slides:" data-ar="حمّل الشرائح:">Download the slides:</span> <a href="downloads/Egypt_PDPL_151-2020_EN.pptx" download>PowerPoint · EN</a> &nbsp;·&nbsp; <a href="downloads/Egypt_PDPL_151-2020_AR.pptx" download>PowerPoint · AR</a></div>
+  </div>
+</section>
+
+<!-- 2 WHY NOW -->
+<section class="slide" data-name-en="Why now" data-name-ar="لماذا الآن">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="The part everyone misses" data-ar="الجزء الذي يغفله الجميع">The part everyone misses</span></div>
+    <p class="big anim" data-en="For five years, Law 151 was a law on paper that no one had to obey. In 2025, that changed." data-ar="لمدة خمس سنوات، ظلّ القانون 151 حبرًا على ورق لا يُلزم أحدًا. وفي 2025 تغيّر كل شيء.">For five years, Law 151 was a law on paper that no one had to obey. In 2025, that changed.</p>
+    <div class="plain anim"><span class="tag" data-en="In plain words" data-ar="ببساطة">In plain words</span><span data-en="A law usually cannot be enforced until the government issues its “executive regulations”, the detailed rulebook. Egypt passed Law 151 in 2020, but the rulebook only arrived in November 2025. So the real obligations, licences, and fines start to bite now, in 2026." data-ar="القانون عادةً لا يُطبَّق حتى تصدر الحكومة «لائحته التنفيذية» أي كتيّب القواعد التفصيلي. أصدرت مصر القانون 151 عام 2020 لكن الكتيّب لم يصدر إلا في نوفمبر 2025. لذا تبدأ الالتزامات الحقيقية والتراخيص والغرامات في التأثير الآن، في 2026.">A law usually cannot be enforced until the government issues its “executive regulations”, the detailed rulebook. Egypt passed Law 151 in 2020, but the rulebook only arrived in November 2025. So the real obligations, licences, and fines start to bite now, in 2026.</span></div>
+    <div class="decree anim">
+      <div class="chip"><div class="d">816</div><div class="t" data-en="Prime Ministerial Decree issuing the Executive Regulations" data-ar="قرار رئيس الوزراء بإصدار اللائحة التنفيذية">Prime Ministerial Decree issuing the Executive Regulations</div></div>
+      <div class="chip"><div class="d" data-en="1 Nov 2025" data-ar="1 نوفمبر 2025">1 Nov 2025</div><div class="t" data-en="Regulations issued (in force 2 Nov 2025)" data-ar="صدور اللائحة (سارية 2 نوفمبر 2025)">Regulations issued (in force 2 Nov 2025)</div></div>
+      <div class="chip"><div class="d" data-en="~Jun 2026" data-ar="~يونيو 2026">~Jun 2026</div><div class="t" data-en="PDPC online licensing portal expected" data-ar="بوابة التراخيص الإلكترونية للمركز">PDPC online licensing portal expected</div></div>
+      <div class="chip"><div class="d" data-en="~Nov 2026" data-ar="~نوفمبر 2026">~Nov 2026</div><div class="t" data-en="Grace period ends, full enforcement" data-ar="انتهاء فترة السماح والتطبيق الكامل">Grace period ends, full enforcement</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 TIMELINE -->
+<section class="slide" data-name-en="Timeline" data-name-ar="الجدول الزمني">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="From paper to power" data-ar="من الورق إلى التنفيذ">From paper to power</span>
+    <h2 class="title" data-en="The journey of Law 151" data-ar="رحلة القانون 151">The journey of Law 151</h2>
+    <p class="lead" data-en="Tap any point to see what happened. The red marker is where we are today." data-ar="اضغط على أي نقطة لمعرفة ما حدث. العلامة الحمراء هي موضعنا اليوم.">Tap any point to see what happened. The red marker is where we are today.</p></div>
+    <div class="tl anim">
+      <div class="tl-track">
+        <div class="tl-node act" data-yr="2020a"><div class="tl-line"></div><div class="tl-dot"></div><div class="tl-yr">Jul 2020</div><div class="tl-tt" data-en="Law enacted" data-ar="إصدار القانون">Law enacted</div></div>
+        <div class="tl-node" data-yr="2020b"><div class="tl-line"></div><div class="tl-dot"></div><div class="tl-yr">Oct 2020</div><div class="tl-tt" data-en="In effect" data-ar="بدء السريان">In effect</div></div>
+        <div class="tl-node" data-yr="dorm"><div class="tl-line"></div><div class="tl-dot"></div><div class="tl-yr">2020-25</div><div class="tl-tt" data-en="The long sleep" data-ar="السبات الطويل">The long sleep</div></div>
+        <div class="tl-node" data-yr="2025"><div class="tl-line"></div><div class="tl-dot"></div><div class="tl-yr">Nov 2025</div><div class="tl-tt" data-en="Regulations" data-ar="اللائحة">Regulations</div></div>
+        <div class="tl-node here" data-yr="2026a"><div class="tl-line"></div><div class="tl-dot"></div><div class="tl-yr">Jun 2026</div><div class="tl-tt" data-en="You are here" data-ar="نحن هنا">You are here</div></div>
+        <div class="tl-node" data-yr="2026b"><div class="tl-line"></div><div class="tl-dot"></div><div class="tl-yr">Nov 2026</div><div class="tl-tt" data-en="Enforcement" data-ar="التطبيق">Enforcement</div></div>
+      </div>
+      <div class="tl-detail" id="tlDetail"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 AT A GLANCE -->
+<section class="slide" data-name-en="At a glance" data-name-ar="في لمحة">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="The essentials" data-ar="الأساسيات">The essentials</span>
+    <h2 class="title" data-en="The law at a glance" data-ar="القانون في لمحة">The law at a glance</h2></div>
+    <div class="grid g4 anim">
+      <div class="stat"><div class="n" data-en="13 Jul 2020" data-ar="13 يوليو 2020">13 Jul 2020</div><div class="l" data-en="Enacted" data-ar="صدوره">Enacted</div><div class="s" data-en="Effective 14 Oct 2020" data-ar="ساري 14 أكتوبر 2020">Effective 14 Oct 2020</div></div>
+      <div class="stat"><div class="n" data-en="1st" data-ar="الأول">1st</div><div class="l" data-en="Comprehensive law" data-ar="قانون شامل">Comprehensive law</div><div class="s" data-en="Egypt's first dedicated data law" data-ar="أول قانون مصري مخصّص للبيانات">Egypt's first dedicated data law</div></div>
+      <div class="stat"><div class="n">PDPC</div><div class="l" data-en="The regulator" data-ar="الجهة المنظِّمة">The regulator</div><div class="s" data-en="Data Protection Center, under MCIT" data-ar="مركز حماية البيانات، تحت وزارة الاتصالات">Data Protection Center, under MCIT</div></div>
+      <div class="stat"><div class="n" data-en="EGP 5M" data-ar="5 مليون">EGP 5M</div><div class="l" data-en="Top fine" data-ar="أقصى غرامة">Top fine</div><div class="s" data-en="Plus possible imprisonment" data-ar="إضافةً إلى احتمال الحبس">Plus possible imprisonment</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 DEFINITIONS -->
+<section class="slide" data-name-en="Key terms" data-name-ar="المصطلحات">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="Speak the language" data-ar="افهم المصطلحات">Speak the language</span>
+    <h2 class="title" data-en="Five words that unlock the whole law" data-ar="خمس كلمات تفتح القانون كله">Five words that unlock the whole law</h2>
+    <p class="lead" data-en="Tap a card to flip it." data-ar="اضغط على البطاقة لقلبها.">Tap a card to flip it.</p></div>
+    <div class="grid g3 anim" id="defGrid"></div>
+  </div>
+</section>
+
+<!-- 6 LAWFUL BASIS -->
+<section class="slide" data-name-en="Lawful bases" data-name-ar="الأسس القانونية">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="Common myth, corrected" data-ar="خرافة شائعة نصحّحها">Common myth, corrected</span>
+    <h2 class="title" data-en="“You always need consent.” Not true." data-ar="«تحتاج دائمًا إلى موافقة». غير صحيح.">“You always need consent.” Not true.</h2>
+    <p class="lead" data-en="Consent is only one of SIX lawful bases (Article 6). Pick a situation and watch which basis lights up." data-ar="الموافقة ليست سوى واحدٍ من ستة أسس قانونية (المادة 6). اختر موقفًا وراقب الأساس الذي يُضيء.">Consent is only one of SIX lawful bases (Article 6). Pick a situation and watch which basis lights up.</p></div>
+    <div class="wiz anim">
+      <div class="wiz-q">
+        <div style="font-weight:700;margin-bottom:10px;color:#fff" data-en="Which situation are you in?" data-ar="في أي موقف أنت؟">Which situation are you in?</div>
+        <button class="scn" data-b="0" data-en="A user ticks a box to join my newsletter" data-ar="يضع مستخدم علامة للاشتراك في نشرتي">A user ticks a box to join my newsletter</button>
+        <button class="scn" data-b="1" data-en="A customer buys a product and I must ship it" data-ar="يشتري عميل منتجًا ويجب أن أشحنه">A customer buys a product and I must ship it</button>
+        <button class="scn" data-b="2" data-en="The tax authority legally requires my records" data-ar="تطلب مصلحة الضرائب سجلّاتي قانونًا">The tax authority legally requires my records</button>
+        <button class="scn" data-b="3" data-en="I screen for fraud to protect my business" data-ar="أفحص الاحتيال لحماية نشاطي">I screen for fraud to protect my business</button>
+        <button class="scn" data-b="4" data-en="A hospital uses data to save a patient's life" data-ar="يستخدم مستشفى البيانات لإنقاذ حياة مريض">A hospital uses data to save a patient's life</button>
+        <button class="scn" data-b="5" data-en="A government body runs a public registry" data-ar="تدير جهة حكومية سجلًّا عامًّا">A government body runs a public registry</button>
+        <div class="wiz-ans" id="wizAns"></div>
+      </div>
+      <div class="basis" id="basisList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 RIGHTS -->
+<section class="slide" data-name-en="Your rights" data-name-ar="حقوقك">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="Power to the person" data-ar="السلطة للفرد">Power to the person</span>
+    <h2 class="title" data-en="Your data, your rights" data-ar="بياناتك، حقوقك">Your data, your rights</h2></div>
+    <div class="grid g3 anim" id="rightsGrid"></div>
+  </div>
+</section>
+
+<!-- 8 OBLIGATIONS -->
+<section class="slide" data-name-en="Obligations" data-name-ar="الالتزامات">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="If you hold data, you owe duties" data-ar="من يحتفظ بالبيانات تقع عليه واجبات">If you hold data, you owe duties</span>
+    <h2 class="title" data-en="What every company must now do" data-ar="ما يجب على كل شركة فعله الآن">What every company must now do</h2></div>
+    <div class="grid g4 anim" id="obGrid"></div>
+    <div class="plain anim"><span class="tag" data-en="Myth vs Fact" data-ar="خرافة وحقيقة">Myth vs Fact</span><span data-en="Many summaries say a Data Protection Officer is “not required” in Egypt. Wrong. Article 8 makes appointing a competent DPO mandatory, and failing to is itself finable (EGP 200k-2M)." data-ar="تقول ملخّصات كثيرة إن «مسؤول حماية البيانات» غير مطلوب في مصر. خطأ. تُلزم المادة 8 بتعيين مسؤول كفء، وعدم التعيين مخالفة يُعاقب عليها (200 ألف-2 مليون ج.م).">Many summaries say a Data Protection Officer is “not required” in Egypt. Wrong. Article 8 makes appointing a competent DPO mandatory, and failing to is itself finable (EGP 200k-2M).</span></div>
+    <div class="breach anim">
+      <button class="bbtn" id="breachBtn" data-en="⚠ Simulate a data breach" data-ar="⚠ محاكاة اختراق بيانات">⚠ Simulate a data breach</button>
+      <div class="btimer" id="btimer">72:00:00</div>
+      <div class="bmsg" id="bmsg" data-en="The 72-hour clock to notify the PDPC starts the moment you discover a breach." data-ar="ساعة الـ72 لإبلاغ المركز تبدأ لحظة اكتشاف الاختراق.">The 72-hour clock to notify the PDPC starts the moment you discover a breach.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 PDPC -->
+<section class="slide" data-name-en="The PDPC" data-name-ar="المركز">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="The new watchdog" data-ar="الجهة الرقابية الجديدة">The new watchdog</span>
+    <h2 class="title" data-en="Meet the PDPC" data-ar="تعرّف على المركز">Meet the PDPC</h2>
+    <p class="lead" data-en="The Personal Data Protection Center licenses, watches, and punishes. Hover a petal." data-ar="مركز حماية البيانات الشخصية يرخّص ويراقب ويعاقب. مرّر المؤشر على البتلة.">The Personal Data Protection Center licenses, watches, and punishes. Hover a petal.</p></div>
+    <div class="wheel-wrap anim">
+      <div class="wheel" id="wheel"><div class="hub"><span data-en="PDPC" data-ar="المركز">PDPC</span></div></div>
+      <div class="wheel-info" id="wheelInfo"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 PENALTIES -->
+<section class="slide" data-name-en="Penalties" data-name-ar="العقوبات">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="The cost of getting it wrong" data-ar="ثمن الخطأ">The cost of getting it wrong</span>
+    <h2 class="title" data-en="Penalty explorer" data-ar="مستكشف العقوبات">Penalty explorer</h2>
+    <p class="lead" data-en="Pick a violation to see the fine range and whether prison is on the table." data-ar="اختر مخالفة لرؤية نطاق الغرامة واحتمال الحبس.">Pick a violation to see the fine range and whether prison is on the table.</p>
+    <label class="rep-toggle" id="repToggle"><span class="switch"></span><span data-en="Repeat offence (fines double ×2)" data-ar="مخالفة متكرّرة (تتضاعف الغرامات ×2)">Repeat offence (fines double ×2)</span></label></div>
+    <div class="pen anim">
+      <div class="pen-list" id="penList"></div>
+      <div class="pen-view" id="penView"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 CROSS BORDER -->
+<section class="slide" data-name-en="Cross-border" data-name-ar="النقل الخارجي">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="Data leaving Egypt" data-ar="خروج البيانات من مصر">Data leaving Egypt</span>
+    <h2 class="title" data-en="Sending data abroad? Three gates." data-ar="ترسل بيانات للخارج؟ ثلاث بوابات.">Sending data abroad? Three gates.</h2></div>
+    <div class="grid g3 anim" id="cbGrid"></div>
+    <div class="plain anim"><span class="tag" data-en="In plain words" data-ar="ببساطة">In plain words</span><span data-en="You cannot freely move Egyptians' data abroad. The destination must protect data at least as well as Egypt, you need a PDPC licence first, and the PDPC has 90 days to decide, silence counts as NO." data-ar="لا يمكنك نقل بيانات المصريين بحرية للخارج. يجب أن تحمي الدولة المستقبِلة البيانات بمستوى لا يقل عن مصر، وتحتاج ترخيص المركز أولًا، ولديه 90 يومًا للبتّ، والصمت يعني الرفض.">You cannot freely move Egyptians' data abroad. The destination must protect data at least as well as Egypt, you need a PDPC licence first, and the PDPC has 90 days to decide, silence counts as NO.</span></div>
+  </div>
+</section>
+
+<!-- 12 GDPR -->
+<section class="slide" data-name-en="vs GDPR" data-name-ar="مقابل GDPR">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="Against the world's gold standard" data-ar="مقابل المعيار العالمي الذهبي">Against the world's gold standard</span>
+    <h2 class="title" data-en="Egypt PDPL vs EU GDPR" data-ar="القانون المصري مقابل GDPR الأوروبي">Egypt PDPL vs EU GDPR</h2>
+    <label class="cmp-toggle" id="diffToggle"><span class="switch"></span><span data-en="Highlight where they differ" data-ar="إبراز نقاط الاختلاف">Highlight where they differ</span></label></div>
+    <table class="cmp anim" id="cmpTable">
+      <thead><tr><th data-en="Dimension" data-ar="البند">Dimension</th><th data-en="Egypt, Law 151/2020" data-ar="مصر, 151/2020">Egypt, Law 151/2020</th><th data-en="EU, GDPR" data-ar="الاتحاد الأوروبي, GDPR">EU, GDPR</th></tr></thead>
+      <tbody id="cmpBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 13 SECTORS -->
+<section class="slide" data-name-en="Sectors" data-name-ar="القطاعات">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="On the ground in Egypt" data-ar="على أرض الواقع في مصر">On the ground in Egypt</span>
+    <h2 class="title" data-en="What it changes, sector by sector" data-ar="ما الذي يتغيّر، قطاعًا بقطاع">What it changes, sector by sector</h2></div>
+    <div class="tabs anim" id="secTabs"></div>
+    <div class="sector-body anim" id="secBody"></div>
+  </div>
+</section>
+
+<!-- 14 STRATEGIC IMPACT -->
+<section class="slide" data-name-en="Strategy" data-name-ar="الاستراتيجية">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="The strategy lens" data-ar="منظور الاستراتيجية">The strategy lens</span>
+    <h2 class="title" data-en="Compliance is not a cost. It's an edge." data-ar="الامتثال ليس تكلفة، بل ميزة.">Compliance is not a cost. It's an edge.</h2></div>
+    <div class="grid g4 anim" id="impactGrid"></div>
+  </div>
+</section>
+
+<!-- 15 ROADMAP -->
+<section class="slide" data-name-en="Roadmap" data-name-ar="خارطة الطريق">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="What to do before Nov 2026" data-ar="ما يجب فعله قبل نوفمبر 2026">What to do before Nov 2026</span>
+    <h2 class="title" data-en="A four-step compliance roadmap" data-ar="خارطة امتثال من أربع خطوات">A four-step compliance roadmap</h2></div>
+    <div class="road anim" id="roadmap-steps"></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="slide" data-name-en="Test yourself" data-name-ar="اختبر نفسك">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="Knowledge check" data-ar="اختبار سريع">Knowledge check</span>
+    <h2 class="title" data-en="Test yourself" data-ar="اختبر نفسك">Test yourself</h2>
+    <p class="lead" data-en="Five quick questions. Tap an answer for instant feedback." data-ar="خمسة أسئلة سريعة. اضغط على الإجابة لترى النتيجة فورًا.">Five quick questions. Tap an answer for instant feedback.</p></div>
+    <div class="quiz anim" id="quiz"></div>
+  </div>
+</section>
+
+<!-- READINESS -->
+<section class="slide" data-name-en="Are you ready?" data-name-ar="هل أنت مستعد؟">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="Self-check" data-ar="تقييم ذاتي">Self-check</span>
+    <h2 class="title" data-en="How ready are you for Nov 2026?" data-ar="ما مدى استعدادك لنوفمبر 2026؟">How ready are you for Nov 2026?</h2>
+    <p class="lead" data-en="Tick what your organisation already does. The ring shows your readiness." data-ar="اختر ما تقوم به مؤسستك بالفعل. تُظهر الحلقة مدى جاهزيتك.">Tick what your organisation already does. The ring shows your readiness.</p></div>
+    <div class="ready anim">
+      <div class="ring-wrap">
+        <svg width="230" height="230" viewBox="0 0 230 230">
+          <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c8a24a"/><stop offset="1" stop-color="#3fb37f"/></linearGradient></defs>
+          <circle class="ring-bg" cx="115" cy="115" r="100"/>
+          <circle class="ring-fg" id="ringFg" cx="115" cy="115" r="100" stroke-dasharray="628" stroke-dashoffset="628"/>
+        </svg>
+        <div class="ring-center"><div class="pc" id="ringPc">0%</div><div class="vd" id="ringVd"></div></div>
+      </div>
+      <div class="checks" id="checks"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 CONCLUSION -->
+<section class="slide" data-name-en="Conclusion" data-name-ar="الخلاصة">
+  <div class="inner" style="text-align:center">
+    <h2 class="title anim" style="max-width:900px;margin-inline:auto" data-en="Law 151 turns privacy from a courtesy into a board-level duty." data-ar="القانون 151 يحوّل الخصوصية من لباقة إلى واجب على مستوى مجلس الإدارة.">Law 151 turns privacy from a courtesy into a board-level duty.</h2>
+    <p class="lead anim" style="margin-inline:auto;margin-top:14px" data-en="The five-year grace is over. The businesses that treat data protection as strategy, not paperwork, will earn trust, attract investment, and avoid painful fines." data-ar="انتهت سنوات السماح الخمس. الشركات التي تتعامل مع حماية البيانات كاستراتيجية لا كأوراق روتينية ستكسب الثقة وتجذب الاستثمار وتتجنّب الغرامات.">The five-year grace is over. The businesses that treat data protection as strategy, not paperwork, will earn trust, attract investment, and avoid painful fines.</p>
+  </div>
+</section>
+
+<!-- 17 SOURCES -->
+<section class="slide" data-name-en="Sources" data-name-ar="المصادر">
+  <div class="inner">
+    <div class="anim"><span class="eyebrow" data-en="Every claim, sourced" data-ar="كل معلومة بمصدرها">Every claim, sourced</span>
+    <h2 class="title" data-en="Sources & references" data-ar="المصادر والمراجع">Sources & references</h2>
+    <p class="lead" data-en="Built on the law's text and authoritative legal analysis. Accessed June 2026." data-ar="مبنيّ على نص القانون وتحليلات قانونية موثوقة. الاطّلاع: يونيو 2026.">Built on the law's text and authoritative legal analysis. Accessed June 2026.</p></div>
+    <div class="refs anim" id="refList"></div>
+  </div>
+</section>
+
+</div><!-- /slideSource -->
+
+<div class="controls">
+  <div class="ctrl-row">
+    <button class="navb" id="prevBtn" aria-label="Previous">‹</button>
+    <div class="counter"><b id="cnow">1</b> / <span id="ctot">17</span></div>
+    <button class="navb" id="nextBtn" aria-label="Next">›</button>
+  </div>
+  <div class="dots" id="dots"></div>
+</div>
+
+<script>
+/* ---------- DATA ---------- */
+var DEF=[
+ {t_en:"Personal Data",t_ar:"البيانات الشخصية",d_en:"Any information that points to a specific person: name, ID number, phone, location, even an online identifier.",d_ar:"أي معلومة تدلّ على شخص بعينه: الاسم، الرقم القومي، الهاتف، الموقع، حتى المعرّف الإلكتروني."},
+ {t_en:"Sensitive Data",t_ar:"البيانات الحسّاسة",d_en:"Extra-private data, health, genetics, biometrics, finances, religion, politics, children. Protected more strictly.",d_ar:"بيانات بالغة الخصوصية: الصحة، الجينات، السمات الحيوية، المال، الدين، السياسة، الأطفال. تُحمى بصرامة أكبر."},
+ {t_en:"Data Controller",t_ar:"المتحكّم في البيانات",d_en:"The boss of the data, the company or person who decides WHY and HOW personal data is used.",d_ar:"صاحب القرار في البيانات: الشركة أو الشخص الذي يقرّر لماذا وكيف تُستخدم البيانات."},
+ {t_en:"Data Processor",t_ar:"المعالِج للبيانات",d_en:"The hired hands, a vendor that handles data ON BEHALF of the controller (e.g. a cloud provider).",d_ar:"المنفّذ بالوكالة: جهة تتعامل مع البيانات نيابةً عن المتحكّم (مثل مزوّد سحابي)."},
+ {t_en:"Consent",t_ar:"الموافقة",d_en:"A clear, specific, informed YES from the person, freely given, and just as easy to take back.",d_ar:"موافقة واضحة ومحدّدة ومستنيرة من الشخص، تُمنَح بحرية ويسهل سحبها."}
+];
+var BASIS=[{en:"Explicit consent",ar:"الموافقة الصريحة"},{en:"Performing a contract",ar:"تنفيذ عقد"},{en:"A legal obligation / court order",ar:"التزام قانوني / أمر قضائي"},{en:"Legitimate interest of the controller",ar:"المصلحة المشروعة للمتحكّم"},{en:"Protecting someone's vital interests",ar:"حماية المصالح الحيوية لشخص"},{en:"A public task / official authority",ar:"مهمة عامة / سلطة رسمية"}];
+var WIZ_MSG={en:["This is classic CONSENT, a clear opt-in.","No consent needed, you process to FULFIL THE CONTRACT the customer asked for.","You are obeying a LEGAL OBLIGATION, consent is not required.","This is your LEGITIMATE INTEREST (fraud prevention), if it doesn't override the person's rights.","VITAL INTERESTS, protecting life and health justifies processing.","A PUBLIC TASK carried out by an official authority."],ar:["هذه موافقة كلاسيكية, اختيار صريح.","لا حاجة لموافقة: تعالج لتنفيذ العقد الذي طلبه العميل.","أنت تمتثل لالتزام قانوني, لا تُشترط الموافقة.","هذه مصلحتك المشروعة (منع الاحتيال) ما لم تطغَ على الحقوق.","المصالح الحيوية, حماية الحياة والصحة تبرّر المعالجة.","مهمة عامة تؤدّيها سلطة رسمية."]};
+var RIGHTS=[{t_en:"Be Informed",t_ar:"حق العلم",d_en:"Know that your data is being collected and why.",d_ar:"أن تعرف أن بياناتك تُجمع ولماذا."},{t_en:"Access",t_ar:"الاطّلاع",d_en:"Get a copy of the personal data an organisation holds about you.",d_ar:"الحصول على نسخة من بياناتك لدى جهة ما."},{t_en:"Correction",t_ar:"التصحيح",d_en:"Fix data that is wrong or incomplete.",d_ar:"تصحيح البيانات الخاطئة أو الناقصة."},{t_en:"Erasure",t_ar:"المحو",d_en:"Have your data deleted when it is no longer needed.",d_ar:"حذف بياناتك عند انتفاء الحاجة إليها."},{t_en:"Object",t_ar:"الاعتراض",d_en:"Say no to certain uses, like direct marketing.",d_ar:"رفض استخدامات معيّنة كالتسويق المباشر."},{t_en:"Withdraw Consent",t_ar:"سحب الموافقة",d_en:"Change your mind at any time, with no penalty.",d_ar:"تغيير رأيك في أي وقت دون عقوبة."}];
+var OBLIG=[{t_en:"Register & licence",t_ar:"التسجيل والترخيص",d_en:"Get a PDPC licence or permit before processing personal data.",d_ar:"احصل على ترخيص المركز قبل معالجة البيانات."},{t_en:"Secure the data",t_ar:"تأمين البيانات",d_en:"Apply real safeguards, encryption, access control.",d_ar:"طبّق ضمانات حقيقية: التشفير والتحكّم في الوصول."},{t_en:"Report breaches",t_ar:"الإبلاغ عن الاختراق",d_en:"Tell the PDPC within 72 hours; affected people within 3 working days.",d_ar:"أبلِغ المركز خلال 72 ساعة، والمتضرّرين خلال 3 أيام عمل."},{t_en:"Appoint a DPO",t_ar:"تعيين مسؤول حماية",d_en:"A competent Data Protection Officer is mandatory (Article 8).",d_ar:"تعيين مسؤول حماية بيانات كفء إلزامي (المادة 8)."}];
+var PDPC=[{t_en:"Licensing",t_ar:"الترخيص",d_en:"Issues the licences and permits that let companies legally process data.",d_ar:"تُصدر التراخيص التي تتيح للشركات معالجة البيانات قانونًا."},{t_en:"Monitoring",t_ar:"الرقابة",d_en:"Audits compliance and investigates complaints from the public.",d_ar:"تدقّق الامتثال وتحقّق في شكاوى الجمهور."},{t_en:"Regulation",t_ar:"التنظيم",d_en:"Issues binding rules, decisions, and guidelines.",d_ar:"تُصدر القواعد والقرارات والإرشادات المُلزِمة."},{t_en:"Enforcement",t_ar:"الإنفاذ",d_en:"Imposes fines and refers criminal violations to the prosecutor.",d_ar:"تفرض الغرامات وتحيل المخالفات الجنائية إلى النيابة."},{t_en:"Awareness",t_ar:"التوعية",d_en:"Builds a privacy culture through public education.",d_ar:"تبني ثقافة الخصوصية عبر التوعية."},{t_en:"Cross-border",t_ar:"النقل الخارجي",d_en:"Approves or refuses transfers of data outside Egypt.",d_ar:"توافق على نقل البيانات خارج مصر أو ترفضه."}];
+var PEN=[{t_en:"General non-compliance",t_ar:"مخالفة عامة",min:200000,max:2000000,jail:false,d_en:"Breaking the law's general duties, 200,000 up to 2 million pounds.",d_ar:"الإخلال بالواجبات العامة, من 200 ألف حتى 2 مليون جنيه."},{t_en:"Licensing violation",t_ar:"مخالفة الترخيص",min:500000,max:5000000,jail:true,d_en:"Processing without the required PDPC licence, the heaviest fine band, up to 5 million.",d_ar:"المعالجة بدون ترخيص المركز, أعلى شريحة غرامة، حتى 5 ملايين."},{t_en:"Data-security breach",t_ar:"اختراق أمن البيانات",min:300000,max:3000000,jail:true,d_en:"Failing to secure data or notify a breach, 300,000 to 3 million.",d_ar:"التقصير في تأمين البيانات أو الإبلاغ, من 300 ألف إلى 3 ملايين."},{t_en:"Unlawful marketing",t_ar:"تسويق غير مشروع",min:200000,max:2000000,jail:false,d_en:"Marketing without a proper basis, 200,000 to 2 million.",d_ar:"التسويق دون أساس قانوني, من 200 ألف إلى 2 مليون."},{t_en:"No DPO appointed",t_ar:"عدم تعيين مسؤول",min:200000,max:2000000,jail:false,d_en:"Failing to appoint a DPO, this alone is finable (Art. 39).",d_ar:"عدم تعيين مسؤول حماية البيانات, مخالفة بذاتها (م.39)."},{t_en:"Sensitive data / illegal transfer",t_ar:"بيانات حسّاسة / نقل غير قانوني",min:300000,max:5000000,jail:true,d_en:"Misusing sensitive data or moving data abroad without approval, criminal liability and prison.",d_ar:"إساءة استخدام البيانات الحسّاسة أو نقلها للخارج دون موافقة, مسؤولية جنائية وحبس."}];
+var CB=[{t_en:"Adequate protection",t_ar:"حماية كافية",d_en:"The receiving country must protect data at least as strongly as Egypt does.",d_ar:"يجب أن تحمي الدولة المستقبِلة البيانات بمستوى لا يقل عن مصر."},{t_en:"PDPC licence first",t_ar:"ترخيص المركز أولًا",d_en:"You need an approved licence or permit before any transfer (Article 14).",d_ar:"تحتاج ترخيصًا معتمَدًا قبل أي نقل (المادة 14)."},{t_en:"90-day clock, silence = no",t_ar:"90 يومًا، والصمت رفض",d_en:"The PDPC decides within 90 days; no answer means rejected.",d_ar:"يبتّ المركز خلال 90 يومًا، وعدم الرد يعني الرفض."}];
+var CMP=[{k_en:"Lawful bases",k_ar:"الأسس القانونية",eg_en:"Six bases (Article 6)",eg_ar:"ستة أسس (المادة 6)",eu_en:"Six bases (Article 6)",eu_ar:"ستة أسس (المادة 6)",diff:false},{k_en:"Consent",k_ar:"الموافقة",eg_en:"Explicit; required for sensitive data",eg_ar:"صريحة؛ لازمة للبيانات الحسّاسة",eu_en:"One of six bases; explicit for special data",eu_ar:"أحد ستة أسس؛ صريحة للبيانات الخاصة",diff:true},{k_en:"DPO",k_ar:"مسؤول الحماية",eg_en:"Mandatory for all (Article 8)",eg_ar:"إلزامي للجميع (المادة 8)",eu_en:"Mandatory only for certain controllers",eu_ar:"إلزامي لبعض المتحكّمين فقط",diff:true},{k_en:"Breach notice",k_ar:"الإبلاغ عن الاختراق",eg_en:"72h to PDPC; 3 working days to people",eg_ar:"72 ساعة للمركز؛ 3 أيام للأفراد",eu_en:"72h to authority; people if high risk",eu_ar:"72 ساعة للجهة؛ الأفراد عند الخطر العالي",diff:true},{k_en:"Maximum fine",k_ar:"أقصى غرامة",eg_en:"EGP 5M + possible imprisonment",eg_ar:"5 مليون ج.م + احتمال الحبس",eu_en:"€20M or 4% of global turnover",eu_ar:"20 مليون يورو أو 4% من الإيرادات",diff:true},{k_en:"Cross-border",k_ar:"النقل الخارجي",eg_en:"PDPC licence + adequacy; 90-day decision",eg_ar:"ترخيص المركز + كفاية؛ قرار خلال 90 يومًا",eu_en:"Adequacy decisions, SCCs, or BCRs",eu_ar:"قرارات كفاية أو SCCs أو BCRs",diff:true},{k_en:"Regulator",k_ar:"الجهة المنظِّمة",eg_en:"PDPC (under MCIT)",eg_ar:"المركز (تحت وزارة الاتصالات)",eu_en:"National DPAs / EDPB",eu_ar:"هيئات وطنية / المجلس الأوروبي",diff:false}];
+var SECTORS=[{k_en:"Banking",k_ar:"البنوك",em:"🏦",d_en:"Banks like CIB and Banque Misr must update privacy policies, capture explicit customer consent, and harden data-security infrastructure.",d_ar:"على بنوك مثل CIB وبنك مصر تحديث سياسات الخصوصية، والحصول على موافقة صريحة، وتعزيز أمن البيانات."},{k_en:"E-Commerce",k_ar:"التجارة الإلكترونية",em:"🛒",d_en:"Marketplaces such as Jumia and Amazon Egypt must rewrite user agreements and give clear consent and data-management options.",d_ar:"على منصّات مثل جوميا وأمازون مصر إعادة صياغة اتفاقيات المستخدم وتوفير خيارات واضحة للموافقة."},{k_en:"Healthcare",k_ar:"الرعاية الصحية",em:"🏥",d_en:"Hospital groups must treat patient records as sensitive data, explicit consent before any third-party sharing.",d_ar:"على المجموعات الطبية معاملة سجلّات المرضى كبيانات حسّاسة, موافقة صريحة قبل أي مشاركة."},{k_en:"Telecom",k_ar:"الاتصالات",em:"📡",d_en:"Vodafone, Orange and Etisalat must modify customer agreements and deploy cybersecurity upgrades.",d_ar:"على فودافون وأورنج واتصالات تعديل اتفاقيات العملاء ونشر تحديثات أمنية."},{k_en:"Government",k_ar:"الحكومة",em:"🏛️",d_en:"Public bodies running registries process data under a public-task basis but still owe security and rights duties.",d_ar:"الجهات الحكومية تعالج البيانات على أساس المهمة العامة لكنها تظل ملزَمة بواجبات الأمن والحقوق."}];
+var IMPACT=[{t_en:"IT Governance",t_ar:"حوكمة تقنية المعلومات",d_en:"Data inventory, classification and access controls must be redesigned.",d_ar:"يجب إعادة تصميم جرد البيانات وتصنيفها والتحكّم في الوصول."},{t_en:"Customer Trust",t_ar:"ثقة العملاء",d_en:"Visible compliance signals trustworthiness, a real differentiator.",d_ar:"الامتثال الظاهر يدل على الجدارة بالثقة, عامل تمييز حقيقي."},{t_en:"Investment",t_ar:"الاستثمار",d_en:"GDPR-equivalent protection attracts foreign investment and cross-border deals.",d_ar:"حماية موازية لـGDPR تجذب الاستثمار الأجنبي."},{t_en:"Risk Reduction",t_ar:"تقليل المخاطر",d_en:"Fewer breaches and fines; a stronger cybersecurity posture.",d_ar:"اختراقات وغرامات أقل ووضع أمني أقوى."}];
+var ROAD=[{t_en:"Assess",t_ar:"التقييم",d_en:"Audit your data, map gaps, rank the risks.",d_ar:"دقّق بياناتك، وحدّد الفجوات، ورتّب المخاطر."},{t_en:"Design",t_ar:"التصميم",d_en:"Write policies, add security controls, build privacy-by-design.",d_ar:"اكتب السياسات وأضف ضوابط الأمن وطبّق الخصوصية من التصميم."},{t_en:"Implement",t_ar:"التنفيذ",d_en:"Register with the PDPC, appoint a DPO, train staff, update systems.",d_ar:"سجّل لدى المركز وعيّن مسؤولًا ودرّب الموظفين وحدّث الأنظمة."},{t_en:"Monitor",t_ar:"المتابعة",d_en:"Run continuous audits and breach drills; keep up with new rules.",d_ar:"نفّذ تدقيقًا مستمرًّا وتدريبات، وواكب القواعد الجديدة."}];
+var TL={"2020a":{t_en:"Law No. 151 enacted",t_ar:"إصدار القانون 151",d_en:"On 13 July 2020 Egypt published its first comprehensive personal-data-protection law in the Official Gazette.",d_ar:"في 13 يوليو 2020 نشرت مصر أول قانون شامل لحماية البيانات في الجريدة الرسمية."},"2020b":{t_en:"The law comes into effect",t_ar:"بدء سريان القانون",d_en:"It formally took effect on 14 October 2020, but its real machinery was still missing.",d_ar:"دخل النفاذ رسميًّا في 14 أكتوبر 2020 لكن آلياته الحقيقية كانت غائبة."},"dorm":{t_en:"Five years of waiting",t_ar:"خمس سنوات من الانتظار",d_en:"Without executive regulations, the law could not really be enforced. Companies largely carried on as before.",d_ar:"بدون لائحة تنفيذية لم يكن ممكنًا تطبيق القانون فعليًّا، واستمرّت الشركات كما كانت."},"2025":{t_en:"The rulebook arrives",t_ar:"وصول كتيّب القواعد",d_en:"Prime Ministerial Decree No. 816 (1 Nov 2025) issued the Executive Regulations, in force 2 Nov 2025. The law became operational.",d_ar:"أصدر قرار رئيس الوزراء 816 (1 نوفمبر 2025) اللائحة التنفيذية، سارية 2 نوفمبر 2025. وأصبح القانون قابلًا للتطبيق."},"2026a":{t_en:"Today, the countdown is on",t_ar:"اليوم, العدّ التنازلي جارٍ",d_en:"In 2026 the PDPC's licensing portal opens and organisations race to comply before the deadline.",d_ar:"في 2026 تُفتح بوابة التراخيص وتتسابق المؤسسات للامتثال قبل الموعد."},"2026b":{t_en:"Full enforcement",t_ar:"التطبيق الكامل",d_en:"Around November 2026 the one-year grace period ends and the PDPC can fully enforce licences, duties, and fines.",d_ar:"نحو نوفمبر 2026 تنتهي فترة السماح ويصبح بإمكان المركز التطبيق الكامل للتراخيص والواجبات والغرامات."}};
+var REFS=[
+ {en:"Library of Congress, Egypt: Country's First Law on Protection of Personal Data Enters into Force (29 Oct 2020).",ar:"مكتبة الكونغرس, مصر: أول قانون لحماية البيانات يدخل حيّز النفاذ (29 أكتوبر 2020).",u:"https://www.loc.gov/item/global-legal-monitor/2020-10-29/egypt-countrys-first-law-on-protection-of-personal-data-enters-into-force/"},
+ {en:"ICLG, Data Protection Laws & Regulations: Egypt 2025-2026.",ar:"ICLG, قوانين ولوائح حماية البيانات: مصر 2025-2026.",u:"https://iclg.com/practice-areas/data-protection-laws-and-regulations/egypt/"},
+ {en:"Kennedys, Egypt's Personal Data Protection Law: the compliance countdown has begun (2026).",ar:"Kennedys, قانون حماية البيانات المصري: بدء العدّ التنازلي للامتثال (2026).",u:"https://www.kennedyslaw.com/en/thought-leadership/article/2026/egypt-s-personal-data-protection-law-the-compliance-countdown-has-begun/"},
+ {en:"Baker McKenzie, Egypt: Important Data Protection Update (Jan 2026).",ar:"Baker McKenzie, مصر: تحديث مهم بشأن حماية البيانات (يناير 2026).",u:"https://www.bakermckenzie.com/en/insight/publications/2026/01/egypt-important-data-protection-update"},
+ {en:"Shalakany, New Executive Regulations for Egypt's Personal Data Protection Law (Dec 2025).",ar:"شلقاني, اللائحة التنفيذية الجديدة لقانون حماية البيانات المصري (ديسمبر 2025).",u:"https://shalakany.com/wp-content/uploads/2025/12/New-Executive-Regulations-for-Egypts-Personal-Data-Protection-Law-.pdf"},
+ {en:"GLA & Company, A First Look at Egypt's Personal Data Protection Executive Regulations.",ar:"GLA, نظرة أولى على اللائحة التنفيذية لحماية البيانات في مصر.",u:"https://www.glaco.com/blog/a-first-look-at-egypts-personal-data-protection-executive-regulations/"},
+ {en:"PwC Middle East, Egypt Data Protection Law.",ar:"PwC الشرق الأوسط, قانون حماية البيانات المصري.",u:"https://www.pwc.com/m1/en/services/consulting/technology/cyber-security/navigating-data-privacy-regulations/egypt-data-protection-law.html"},
+ {en:"Andersen Egypt, Translation of Law No. 151 of 2020 (primary text).",ar:"أندرسن مصر, ترجمة القانون رقم 151 لسنة 2020.",u:"https://eg.andersen.com/translation-law-151-2020/"},
+ {en:"Shand & Partners, Executive Regulations & establishment of the Data Protection Centre.",ar:"Shand & Partners, اللائحة التنفيذية وإنشاء مركز حماية البيانات.",u:"https://www.shandpartners.com/insights/briefings/telecoms-media-technology/the-issuance-of-the-executive-regulations-of-the-data-protection-law-and-the-establishment-of-the-data-protection-centre/"}
+];
+
+/* ---------- HELPERS ---------- */
+var lang="en";
+function tt(o,base){return o[base+"_"+lang]!==undefined?o[base+"_"+lang]:(o[base+"_en"]||"");}
+function esc(s){return String(s).replace(/"/g,'&quot;');}
+
+/* build dynamic blocks */
+(function(){var g=document.getElementById('defGrid');DEF.forEach(function(d){var el=document.createElement('div');el.className='flip';el.innerHTML='<div class="flip-in"><div class="flip-f"><h3 data-en="'+esc(d.t_en)+'" data-ar="'+esc(d.t_ar)+'">'+d.t_en+'</h3><div class="h2t" data-en="Tap to reveal →" data-ar="اضغط للكشف ←">Tap to reveal →</div></div><div class="flip-b"><p data-en="'+esc(d.d_en)+'" data-ar="'+esc(d.d_ar)+'">'+d.d_en+'</p></div></div>';el.onclick=function(){el.classList.toggle('on')};g.appendChild(el);});})();
+(function(){var g=document.getElementById('basisList');BASIS.forEach(function(b,i){var el=document.createElement('div');el.className='b';el.dataset.i=i;el.innerHTML='<div class="bn">'+(i+1)+'</div><div class="bt" data-en="'+esc(b.en)+'" data-ar="'+esc(b.ar)+'">'+b.en+'</div>';g.appendChild(el);});})();
+document.querySelectorAll('.wiz-q .scn').forEach(function(btn){btn.onclick=function(){document.querySelectorAll('.wiz-q .scn').forEach(function(b){b.classList.remove('act')});btn.classList.add('act');var i=+btn.dataset.b;document.querySelectorAll('#basisList .b').forEach(function(b){b.classList.toggle('hit',+b.dataset.i===i)});document.getElementById('wizAns').textContent=WIZ_MSG[lang][i];};});
+function cards(grid,arr,ic){var g=document.getElementById(grid);arr.forEach(function(o,i){var el=document.createElement('div');el.className='card';el.innerHTML='<div class="ic">'+ic[i]+'</div><h3 data-en="'+esc(o.t_en)+'" data-ar="'+esc(o.t_ar)+'">'+o.t_en+'</h3><p data-en="'+esc(o.d_en)+'" data-ar="'+esc(o.d_ar)+'">'+o.d_en+'</p>';g.appendChild(el);});}
+cards('rightsGrid',RIGHTS,['ℹ️','📄','✏️','🗑️','✋','↩️']);
+cards('obGrid',OBLIG,['📝','🔒','⏱️','🛡️']);
+cards('cbGrid',CB,['🌍','🪪','⏳']);
+cards('impactGrid',IMPACT,['🗂️','🤝','📈','🛡️']);
+(function(){var g=document.getElementById('roadmap-steps');ROAD.forEach(function(o,i){var el=document.createElement('div');el.className='step';el.innerHTML='<div class="sn">'+(i+1)+'</div><h4 data-en="'+esc(o.t_en)+'" data-ar="'+esc(o.t_ar)+'">'+o.t_en+'</h4><p data-en="'+esc(o.d_en)+'" data-ar="'+esc(o.d_ar)+'">'+o.d_en+'</p>';g.appendChild(el);});})();
+(function(){var g=document.getElementById('refList');REFS.forEach(function(r,i){var el=document.createElement('div');el.className='ref';el.innerHTML='<b>'+(i+1)+'.</b> <span data-en="'+esc(r.en)+'" data-ar="'+esc(r.ar)+'">'+r.en+'</span> <a href="'+r.u+'" target="_blank" rel="noopener">'+r.u.replace('https://','').split('/')[0]+'</a>';g.appendChild(el);});var n=document.createElement('div');n.className='note';n.setAttribute('data-en','Note: where firms phrase the deadline as “October 2026,” we use the one-year period from the Regulations entering force (2 Nov 2025).');n.setAttribute('data-ar','ملاحظة: حين تذكر بعض المكاتب الموعد بـ«أكتوبر 2026»، نعتمد فترة العام من سريان اللائحة (2 نوفمبر 2025).');n.textContent=n.getAttribute('data-en');g.appendChild(n);})();
+
+/* PDPC wheel */
+(function(){var w=document.getElementById('wheel');var n=PDPC.length;for(var i=0;i<n;i++){var ang=(360/n)*i-90;var s=document.createElement('div');s.className='spoke';s.style.transform='rotate('+ang+'deg)';s.innerHTML='<div class="pill" data-i="'+i+'" style="transform:translateY(-50%) rotate('+(-ang)+'deg)"><b data-en="'+esc(PDPC[i].t_en)+'" data-ar="'+esc(PDPC[i].t_ar)+'">'+PDPC[i].t_en+'</b><small data-en="hover" data-ar="مرّر">hover</small></div>';w.appendChild(s);}
+ function show(i){var p=PDPC[i];var box=document.getElementById('wheelInfo');box.innerHTML='<h4 data-en="'+esc(p.t_en)+'" data-ar="'+esc(p.t_ar)+'">'+tt(p,'t')+'</h4><p data-en="'+esc(p.d_en)+'" data-ar="'+esc(p.d_ar)+'">'+tt(p,'d')+'</p>';w.querySelectorAll('.pill').forEach(function(x){x.classList.toggle('on',+x.dataset.i===i)});}
+ w.querySelectorAll('.pill').forEach(function(p){p.onmouseenter=function(){show(+p.dataset.i)};p.onclick=function(){show(+p.dataset.i)};});show(0);})();
+
+/* penalties */
+var penView=document.getElementById('penView');
+(function(){var g=document.getElementById('penList');PEN.forEach(function(p,i){var b=document.createElement('button');b.className='pv'+(i===0?' act':'');b.dataset.i=i;b.innerHTML='<span data-en="'+esc(p.t_en)+'" data-ar="'+esc(p.t_ar)+'">'+p.t_en+'</span>';b.onclick=function(){document.querySelectorAll('.pv').forEach(function(x){x.classList.remove('act')});b.classList.add('act');renderPen(i);};g.appendChild(b);});})();
+function fmt(n){return n.toLocaleString('en-US');}
+var penRepeat=false;
+function renderPen(i){var p=PEN[i];var mul=penRepeat?2:1;var mn=p.min*mul,mx=p.max*mul;
+ var pct=Math.min(100,Math.round(mx/5000000*100));var jailY=lang==='ar'?'نعم, حبس وارد':'Yes, prison possible';var jailN=lang==='ar'?'لا حبس لهذه الشريحة':'No prison for this tier';
+ var repTag=penRepeat?(' <span style="color:var(--red-soft);font-size:13px">'+(lang==='ar'?'(×2 تكرار)':'(×2 repeat)')+'</span>'):'';
+ penView.innerHTML='<div class="pt" data-en="'+esc(p.t_en)+'" data-ar="'+esc(p.t_ar)+'">'+tt(p,'t')+'</div><div class="gauge"><div class="fill" style="width:0"></div></div><div class="gauge-scale"><span>EGP 0</span><span>2.5M</span><span>5M+</span></div><div class="pen-figs"><div class="pen-fig"><div class="pf-n">'+fmt(mn)+'</div><div class="pf-l">'+(lang==='ar'?'أدنى غرامة (ج.م)':'Minimum fine (EGP)')+'</div></div><div class="pen-fig"><div class="pf-n">'+fmt(mx)+repTag+'</div><div class="pf-l">'+(lang==='ar'?'أقصى غرامة (ج.م)':'Maximum fine (EGP)')+'</div></div></div><div class="pen-jail">'+(lang==='ar'?'الحبس: ':'Imprisonment: ')+(p.jail?'<span class="y">'+jailY+'</span>':jailN)+'</div><div class="pen-desc" data-en="'+esc(p.d_en)+'" data-ar="'+esc(p.d_ar)+'">'+tt(p,'d')+'</div>';setTimeout(function(){var f=penView.querySelector('.fill');if(f)f.style.width=pct+'%';},80);}
+renderPen(0);
+document.getElementById('repToggle').onclick=function(){penRepeat=!penRepeat;this.classList.toggle('on',penRepeat);renderPen(document.querySelector('.pv.act')?+document.querySelector('.pv.act').dataset.i:0);};
+
+/* comparison */
+(function(){var b=document.getElementById('cmpBody');CMP.forEach(function(c){var tr=document.createElement('tr');if(c.diff)tr.className='diff';tr.innerHTML='<td data-en="'+esc(c.k_en)+'" data-ar="'+esc(c.k_ar)+'">'+c.k_en+'</td><td data-en="'+esc(c.eg_en)+'" data-ar="'+esc(c.eg_ar)+'">'+c.eg_en+'</td><td class="eu" data-en="'+esc(c.eu_en)+'" data-ar="'+esc(c.eu_ar)+'">'+c.eu_en+'</td>';b.appendChild(tr);});})();
+document.getElementById('diffToggle').onclick=function(){this.classList.toggle('on');document.querySelectorAll('#cmpTable tr.diff').forEach(function(r){r.classList.toggle('show')});};
+
+/* sectors */
+var secBody=document.getElementById('secBody');
+(function(){var t=document.getElementById('secTabs');SECTORS.forEach(function(s,i){var b=document.createElement('button');b.className='tab'+(i===0?' act':'');b.dataset.i=i;b.innerHTML='<span data-en="'+esc(s.k_en)+'" data-ar="'+esc(s.k_ar)+'">'+s.k_en+'</span>';b.onclick=function(){document.querySelectorAll('#secTabs .tab').forEach(function(x){x.classList.remove('act')});b.classList.add('act');renderSec(i);};t.appendChild(b);});})();
+function renderSec(i){var s=SECTORS[i];secBody.innerHTML='<div class="em">'+s.em+'</div><div><h4 data-en="'+esc(s.k_en)+'" data-ar="'+esc(s.k_ar)+'">'+tt(s,'k')+'</h4><p data-en="'+esc(s.d_en)+'" data-ar="'+esc(s.d_ar)+'">'+tt(s,'d')+'</p></div>';}
+renderSec(0);
+
+/* timeline */
+var tlDetail=document.getElementById('tlDetail');
+function renderTL(key){var d=TL[key];tlDetail.innerHTML='<h4 data-en="'+esc(d.t_en)+'" data-ar="'+esc(d.t_ar)+'">'+tt(d,'t')+'</h4><p data-en="'+esc(d.d_en)+'" data-ar="'+esc(d.d_ar)+'">'+tt(d,'d')+'</p>';}
+document.querySelectorAll('.tl-node').forEach(function(n){n.onclick=function(){document.querySelectorAll('.tl-node').forEach(function(x){x.classList.remove('act')});n.classList.add('act');renderTL(n.dataset.yr);};});
+renderTL('2020a');
+
+/* ---------- BREACH TIMER ---------- */
+(function(){var btn=document.getElementById('breachBtn'),tm=document.getElementById('btimer'),msg=document.getElementById('bmsg');var iv=null,left=0;
+ var startEn=btn.getAttribute('data-en'),startAr=btn.getAttribute('data-ar');
+ function paint(){var h=Math.floor(left/3600),m=Math.floor(left%3600/60),s=left%60;tm.textContent=('0'+h).slice(-2)+':'+('0'+m).slice(-2)+':'+('0'+s).slice(-2);tm.classList.toggle('warn',left<=12*3600);}
+ btn.onclick=function(){if(iv){clearInterval(iv);iv=null;tm.classList.remove('run','warn');btn.setAttribute('data-en',startEn);btn.setAttribute('data-ar',startAr);btn.textContent=btn.getAttribute('data-'+lang);return;}
+   left=72*3600;tm.classList.add('run');paint();
+   btn.setAttribute('data-en','■ Stop');btn.setAttribute('data-ar','■ إيقاف');btn.textContent=btn.getAttribute('data-'+lang);
+   msg.setAttribute('data-en','Tick-tock. Miss the 72 hours and it becomes a finable security breach.');msg.setAttribute('data-ar','الوقت يمضي. تجاوز الـ72 ساعة يحوّلها إلى مخالفة أمنية يُعاقب عليها.');msg.textContent=msg.getAttribute('data-'+lang);
+   iv=setInterval(function(){left-=3600;if(left<=0){left=0;paint();clearInterval(iv);iv=null;msg.setAttribute('data-en','Deadline passed, now a reportable violation.');msg.setAttribute('data-ar','انقضى الموعد, أصبحت مخالفة واجبة الإبلاغ.');msg.textContent=msg.getAttribute('data-'+lang);return;}paint();},90);};
+})();
+
+/* ---------- QUIZ ---------- */
+var QUIZ=[
+ {q_en:"When did Egypt's Data Protection Law actually become enforceable?",q_ar:"متى أصبح قانون حماية البيانات المصري قابلًا للتطبيق فعليًّا؟",o_en:["2020, when it was passed","2025, when the Executive Regulations came out","It still isn't"],o_ar:["2020 عند إصداره","2025 عند صدور اللائحة التنفيذية","لم يصبح بعد"],c:1,e_en:"The law waited 5 years for its rulebook, issued Nov 2025.",e_ar:"انتظر القانون 5 سنوات للائحته، التي صدرت في نوفمبر 2025."},
+ {q_en:"How many lawful bases for processing does Article 6 provide?",q_ar:"كم عدد الأسس القانونية للمعالجة في المادة 6؟",o_en:["Only one: consent","Three","Six"],o_ar:["واحد فقط: الموافقة","ثلاثة","ستة"],c:2,e_en:"Consent is just one of six lawful bases.",e_ar:"الموافقة ليست سوى واحدٍ من ستة أسس."},
+ {q_en:"Is appointing a Data Protection Officer (DPO) mandatory?",q_ar:"هل تعيين مسؤول حماية البيانات (DPO) إلزامي؟",o_en:["No, it's optional","Yes, Article 8 requires it","Only for banks"],o_ar:["لا، اختياري","نعم, تُلزم به المادة 8","للبنوك فقط"],c:1,e_en:"Article 8 makes a competent DPO mandatory for all.",e_ar:"تجعل المادة 8 تعيين مسؤول كفء إلزاميًّا للجميع."},
+ {q_en:"How fast must you notify the PDPC of a data breach?",q_ar:"خلال كم من الوقت يجب إبلاغ المركز بالاختراق؟",o_en:["Within 30 days","Within 72 hours","No deadline"],o_ar:["خلال 30 يومًا","خلال 72 ساعة","لا يوجد موعد"],c:1,e_en:"72 hours to the PDPC; 3 working days to affected people.",e_ar:"72 ساعة للمركز، و3 أيام عمل للمتضرّرين."},
+ {q_en:"What's the maximum administrative fine band under the law?",q_ar:"ما أعلى شريحة غرامة إدارية في القانون؟",o_en:["EGP 50,000","EGP 5 million","EGP 500"],o_ar:["50 ألف ج.م","5 مليون ج.م","500 ج.م"],c:1,e_en:"Up to EGP 5M, plus possible imprisonment for criminal breaches.",e_ar:"حتى 5 مليون ج.م، مع احتمال الحبس في المخالفات الجنائية."}
+];
+var qi=0,qscore=0,qans=false;
+function renderQuiz(){var box=document.getElementById('quiz');
+ if(qi>=QUIZ.length){var vEn=qscore>=4?"Excellent, you know the law.":qscore>=2?"Good start, review the deck and retry.":"Time for a re-read.";var vAr=qscore>=4?"ممتاز, أنت تعرف القانون.":qscore>=2?"بداية جيدة, راجع العرض وأعد المحاولة.":"حان وقت إعادة القراءة.";
+   box.innerHTML='<div class="qend"><div class="big-score">'+qscore+' / '+QUIZ.length+'</div><div class="verdict" data-en="'+esc(vEn)+'" data-ar="'+esc(vAr)+'">'+(lang==='ar'?vAr:vEn)+'</div><button class="qnext" id="qrestart" data-en="↻ Try again" data-ar="↻ حاول مجددًا">↻ Try again</button></div>';
+   document.getElementById('qrestart').onclick=function(){qi=0;qscore=0;qans=false;renderQuiz();};return;}
+ var Q=QUIZ[qi];qans=false;
+ var opts='';(lang==='ar'?Q.o_ar:Q.o_en).forEach(function(o,k){opts+='<button class="opt" data-k="'+k+'">'+o+'</button>';});
+ box.innerHTML='<div class="qnum" data-en="Question '+(qi+1)+' of '+QUIZ.length+'" data-ar="سؤال '+(qi+1)+' من '+QUIZ.length+'">'+(lang==='ar'?('سؤال '+(qi+1)+' من '+QUIZ.length):('Question '+(qi+1)+' of '+QUIZ.length))+'</div><div class="qq" data-en="'+esc(Q.q_en)+'" data-ar="'+esc(Q.q_ar)+'">'+tt(Q,'q')+'</div><div id="qopts">'+opts+'</div><div class="qexp" id="qexp"></div><div class="qfoot"><div class="qscore">'+(lang==='ar'?'النتيجة: ':'Score: ')+'<b>'+qscore+'</b> / '+QUIZ.length+'</div><button class="qnext" id="qnext" disabled data-en="Next →" data-ar="التالي →">'+(lang==='ar'?'التالي →':'Next →')+'</button></div>';
+ box.querySelectorAll('.opt').forEach(function(b){b.onclick=function(){if(qans)return;qans=true;var k=+b.dataset.k;
+   box.querySelectorAll('.opt').forEach(function(x){var xk=+x.dataset.k;if(xk===Q.c)x.classList.add('right');else if(xk===k)x.classList.add('wrong');else x.classList.add('dim');});
+   if(k===Q.c)qscore++;
+   var ex=document.getElementById('qexp');ex.setAttribute('data-en',Q.e_en);ex.setAttribute('data-ar',Q.e_ar);ex.textContent=tt(Q,'e');
+   box.querySelector('.qscore b').textContent=qscore;
+   var nx=document.getElementById('qnext');nx.disabled=false;nx.onclick=function(){qi++;renderQuiz();};};});
+}
+renderQuiz();
+
+/* ---------- READINESS ---------- */
+var CHECKS=[{en:"We have appointed a Data Protection Officer (DPO)",ar:"عيّنّا مسؤول حماية بيانات (DPO)"},{en:"We will register / licence with the PDPC",ar:"سنسجّل / نرخّص لدى المركز"},{en:"We keep a full inventory of the data we hold",ar:"لدينا جرد كامل للبيانات التي نحتفظ بها"},{en:"We have a 72-hour breach-response plan",ar:"لدينا خطة استجابة للاختراق خلال 72 ساعة"},{en:"We record and can prove consent",ar:"نسجّل الموافقة ويمكننا إثباتها"},{en:"We reviewed our cross-border data transfers",ar:"راجعنا عمليات نقل البيانات للخارج"}];
+var ringFg=document.getElementById('ringFg'),CIRC=628;
+function renderChecks(){var g=document.getElementById('checks');CHECKS.forEach(function(c,i){var el=document.createElement('div');el.className='ck';el.dataset.i=i;el.innerHTML='<div class="box">✓</div><div class="ct" data-en="'+esc(c.en)+'" data-ar="'+esc(c.ar)+'">'+c.en+'</div>';el.onclick=function(){el.classList.toggle('on');updateRing();};g.appendChild(el);});}
+function updateRing(){var on=document.querySelectorAll('#checks .ck.on').length;var pct=Math.round(on/CHECKS.length*100);
+ ringFg.style.strokeDashoffset=CIRC*(1-on/CHECKS.length);document.getElementById('ringPc').textContent=pct+'%';
+ var vEn=pct===0?"Not started":pct<50?"Getting started":pct<100?"Almost there":"Compliance-ready";var vAr=pct===0?"لم تبدأ بعد":pct<50?"في البداية":pct<100?"اقتربت":"جاهز للامتثال";
+ var vd=document.getElementById('ringVd');vd.setAttribute('data-en',vEn);vd.setAttribute('data-ar',vAr);vd.textContent=(lang==='ar'?vAr:vEn);}
+renderChecks();updateRing();
+
+/* ---------- SLIDE ENGINE ---------- */
+var deck=document.getElementById('deck');
+var slides=Array.prototype.slice.call(document.querySelectorAll('#slideSource .slide'));
+slides.forEach(function(s){deck.appendChild(s);});
+var cur=0;
+document.getElementById('ctot').textContent=slides.length;
+// dots
+var dotsWrap=document.getElementById('dots');
+slides.forEach(function(s,i){var d=document.createElement('div');d.className='dot-i';d.onclick=function(){go(i)};dotsWrap.appendChild(d);});
+var dots=Array.prototype.slice.call(dotsWrap.children);
+
+function layout(){
+  var rtl=document.documentElement.dir==='rtl';
+  slides.forEach(function(s,i){
+    s.classList.remove('active','prevpos');
+    if(i===cur){s.classList.add('active');}
+    else if(i<cur){ if(!rtl)s.classList.add('prevpos'); s.style.transform=rtl?'translateX(100%)':'translateX(-100%)'; }
+    else { s.style.transform=rtl?'translateX(-100%)':'translateX(100%)'; }
+  });
+  // active gets transform via class (translateX(0)); clear inline on active
+  slides[cur].style.transform='';
+}
+function go(n){
+  cur=Math.max(0,Math.min(slides.length-1,n));
+  layout();
+  document.getElementById('cnow').textContent=cur+1;
+  document.getElementById('prog').style.width=((cur)/(slides.length-1)*100)+'%';
+  document.getElementById('prevBtn').disabled=cur===0;
+  document.getElementById('nextBtn').disabled=cur===slides.length-1;
+  dots.forEach(function(d,i){d.classList.toggle('on',i===cur)});
+  var sn=slides[cur];document.getElementById('secName').textContent=sn.getAttribute('data-name-'+lang)||sn.getAttribute('data-name-en');
+  slides[cur].scrollTop=0;
+}
+function next(){if(cur<slides.length-1)go(cur+1);}
+function prev(){if(cur>0)go(cur-1);}
+document.getElementById('nextBtn').onclick=next;
+document.getElementById('prevBtn').onclick=prev;
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'||e.key==='PageDown'){next();}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){prev();}
+  else if(e.key==='Home'){go(0);}
+  else if(e.key==='End'){go(slides.length-1);}
+});
+// touch swipe
+var tx=0,ty=0;
+deck.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;},{passive:true});
+deck.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)){var rtl=document.documentElement.dir==='rtl';if(dx<0){rtl?prev():next();}else{rtl?next():prev();}}},{passive:true});
+
+/* ---------- LANGUAGE ---------- */
+function applyLang(l){
+  lang=l;document.documentElement.lang=l;document.documentElement.dir=(l==='ar'?'rtl':'ltr');
+  document.getElementById('langBtn').textContent=(l==='ar'?'English':'العربية');
+  document.querySelectorAll('[data-en]').forEach(function(el){var v=el.getAttribute('data-'+l);if(v!==null)el.textContent=v;});
+  renderPen(document.querySelector('.pv.act')?+document.querySelector('.pv.act').dataset.i:0);
+  renderQuiz();
+  var an=document.querySelector('.wiz-q .scn.act');if(an){document.getElementById('wizAns').textContent=WIZ_MSG[lang][+an.dataset.b];}
+  var sn=slides[cur];document.getElementById('secName').textContent=sn.getAttribute('data-name-'+lang)||sn.getAttribute('data-name-en');
+  layout();
+}
+document.getElementById('langBtn').onclick=function(){applyLang(lang==='en'?'ar':'en');};
+
+/* ---------- COUNTDOWN ---------- */
+var TARGET=new Date('2026-11-02T00:00:00');
+function tick(){var diff=Math.max(0,TARGET-new Date());var d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);document.getElementById('cdD').textContent=d;document.getElementById('cdH').textContent=('0'+h).slice(-2);document.getElementById('cdM').textContent=('0'+m).slice(-2);document.getElementById('cdS').textContent=('0'+s).slice(-2);}
+tick();setInterval(tick,1000);
+
+/* ---------- BACKGROUND CANVAS ---------- */
+(function(){var c=document.getElementById('bg');var ctx=c.getContext('2d');var W,H,pts;
+ function size(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;var n=Math.min(90,Math.round(W*H/17000));pts=[];for(var i=0;i<n;i++){pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3});}}
+ size();window.addEventListener('resize',function(){size();layout();});
+ function loop(){ctx.clearRect(0,0,W,H);for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,1.3,0,6.3);ctx.fillStyle='rgba(227,198,130,.6)';ctx.fill();for(var j=i+1;j<pts.length;j++){var q=pts[j];var dx=p.x-q.x,dy=p.y-q.y,dist=dx*dx+dy*dy;if(dist<15000){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(200,162,74,'+(.14*(1-dist/15000))+')';ctx.lineWidth=1;ctx.stroke();}}}requestAnimationFrame(loop);}
+ loop();})();
+
+/* init */
+applyLang('en');
+go(0);
+</script>
+</body>
+</html>
